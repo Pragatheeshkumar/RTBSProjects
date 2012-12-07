@@ -1,0 +1,1053 @@
+﻿<Window x:Class="Design.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="{Binding SystemParameters.PrimaryScreenHeight}" 
+    Width="{Binding SystemParameters.PrimaryScreenWidth}"
+        Title="MainWindow"  Background="#FF295475" >
+    
+    <Window.Resources>
+        
+        <Style x:Key="MyGroupbox" TargetType="GroupBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0"  BorderBrush="#FF3C79AD" BorderThickness="1" Height="30"  CornerRadius="0,0,0,0" >
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFD2E3EF" Offset="0" />
+                                        <GradientStop Color="#FFA0C2DB" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter  Margin="4" ContentSource="Header" RecognizesAccessKey="True" />
+                            </Border>
+                            <Border  Grid.Row="1"  Background="White" BorderBrush="#FF1D5282" BorderThickness="1,0,1,1" CornerRadius="0,0,0,0" >
+                                <ContentPresenter Margin="4" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MyGroupbox1" TargetType="GroupBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0"  BorderBrush="#FFF3F4F6" BorderThickness="1" Height="30"  CornerRadius="0,0,0,0" >
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFF8F8FA" Offset="0" />
+                                        <GradientStop Color="#FFF3F4F6" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter  Margin="4" ContentSource="Header" RecognizesAccessKey="True" />
+                            </Border>
+                            <Border  Grid.Row="1"  Background="White" BorderBrush="#FFF3F4F6" BorderThickness="1,0,1,1" CornerRadius="0,0,0,0" >
+                                <ContentPresenter Margin="4" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoundButtonTemplate" TargetType="Button">
+            <Setter Property="Background" Value="Brown"/>
+            <Setter Property="Foreground" Value="White" />
+           
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7"   BorderThickness="1" >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#2F8FB9" Offset="0.151" />
+                                    <GradientStop Color="#00719B" Offset="0.988" />
+                                    <GradientStop Color="#FF5BD0E5" Offset="0.029" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="RoundTxtBoxBaseControlTemplate" TargetType="{x:Type Control}">
+           
+                <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" >
+              <ScrollViewer x:Name="PART_ContentHost"></ScrollViewer>      
+            </Border>
+        </ControlTemplate>
+        
+    </Window.Resources>
+    
+    <!--<ScrollViewer  VerticalScrollBarVisibility="Auto"  Padding="0" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" BorderBrush="{x:Null}">-->
+        <Viewbox Stretch="Uniform">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="900" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" BorderBrush="#FF005A8A" BorderThickness="1" Name="border1" >
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0079AF" Offset="0" />
+                            <GradientStop Color="#FF004370" Offset="0.994" />
+                            <GradientStop Color="#FF005A8A" Offset="0.477" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid >
+
+
+                        <Label  Content="GEMS" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontWeight="ExtraBold" FontSize="18" Margin="10,0,0,0"/>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="80,0,0,0">
+
+                            <Grid >
+                                <Button Style="{StaticResource Black}" BorderBrush="#FF006CA0" Content="Patron Managment" Foreground="White" FontWeight="Bold" FontSize="15"  FontFamily="Arial" Width="160">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF009AF3" Offset="0" />
+                                            <GradientStop Color="#FF0067B8" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+
+                            <Grid >
+                                <Button Style="{StaticResource Black}" BorderBrush="#FF004876" Content="Credit Control" Foreground="White" FontWeight="Bold" FontSize="15"  FontFamily="Arial" Width="130">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0079AF" Offset="0" />
+                                            <GradientStop Color="#FF004370" Offset="0.994" />
+                                            <GradientStop Color="#FF005A8A" Offset="0.477" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+
+                            </Grid>
+
+                            <Grid >
+                                <Button Style="{StaticResource Black}" BorderBrush="#FF004876" Content="Loyalty" Foreground="White" FontWeight="Bold" FontSize="15"  FontFamily="Arial" Width="80">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0079AF" Offset="0" />
+                                            <GradientStop Color="#FF004370" Offset="0.994" />
+                                            <GradientStop Color="#FF005A8A" Offset="0.477" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+
+                            <Grid >
+                                <Button Style="{StaticResource Black}" BorderBrush="#FF004876" Content="Promotions" Foreground="White" FontWeight="Bold" FontSize="15"  FontFamily="Arial" Width="110">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0079AF" Offset="0" />
+                                            <GradientStop Color="#FF004370" Offset="0.994" />
+                                            <GradientStop Color="#FF005A8A" Offset="0.477" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+
+                            <Grid >
+                                <Button Style="{StaticResource Black}" BorderBrush="#FF004876" Content="Patron Inquiry" Foreground="White" FontWeight="Bold" FontSize="15"  FontFamily="Arial" Width="125">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0079AF" Offset="0" />
+                                            <GradientStop Color="#FF004370" Offset="0.994" />
+                                            <GradientStop Color="#FF005A8A" Offset="0.477" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+
+                            <Grid >
+                                <Button Style="{StaticResource Black}" BorderBrush="#FF004876" Content="Report" Foreground="White" FontWeight="Bold" FontSize="15"  FontFamily="Arial" Width="75" BorderThickness="0">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0079AF" Offset="0" />
+                                            <GradientStop Color="#FF004370" Offset="0.994" />
+                                            <GradientStop Color="#FF005A8A" Offset="0.477" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+
+                            </Grid>
+
+                        </StackPanel>
+
+                        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="More" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="12"  FontFamily="Arial" />
+                            <ComboBox Background="{x:Null}" VerticalAlignment="Center" Width="25" Margin="10,0,0,0" Foreground="White" BorderBrush="#FF005B8B" />
+                            <Line Grid.Row="1" X1="50" Y1="70" X2="50" Y2="0" Stroke="#FF618FB5"  StrokeThickness="1"  Width="56" HorizontalAlignment="Left" Margin="-30,0,0,0"/>
+                            <Line Grid.Row="1" X1="50" Y1="70" X2="50" Y2="0" Stroke="#FF618FB5"  StrokeThickness="1"  Width="56" HorizontalAlignment="Left" Margin="50,0,0,0"/>
+
+                            <Button Style="{StaticResource Black}" Margin="5,0,0,0" Background="{x:Null}" BorderBrush="#FF004977">
+                                <Image Source="/Design;component/Images/Min.png" Height="10" Width="20" VerticalAlignment="Center" />
+                            </Button>
+
+                            <Button Style="{StaticResource Black}" Margin="5,0,0,0" Background="{x:Null}" BorderBrush="#FF004977">
+                                <Image Source="/Design;component/Images/Max.png" Height="25" Width="25" VerticalAlignment="Center" />
+                            </Button>
+
+                            <Button Style="{StaticResource Black}" Margin="5,0,0,0" Background="{x:Null}" BorderBrush="#FF004977">
+                                <Image Source="/Design;component/Images/Cross.png" Height="30" Width="30" VerticalAlignment="Center"/>
+                            </Button>
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" BorderBrush="#FF005A8A" BorderThickness="1" Name="border2" >
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0093D0" Offset="0" />
+                            <GradientStop Color="#FF005E8E" Offset="0.994" />
+                            <GradientStop Color="#FF0077AD" Offset="0.477" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" >
+                            <Button Style="{StaticResource Black}" Width="100" Background="{x:Null}" BorderBrush="#FF006698">
+                                <Button.Content>
+                                    <StackPanel Orientation="Vertical" >
+                                        <Image Source="/Design;component/Images/gygt.png" Height="25" Width="25" Margin="0,0,0,10" />
+                                        <TextBlock Text="Reserve" Foreground="White" FontWeight="Bold" Margin="10,-8,0,0" Width="50"/>
+                                        <TextBlock Text="Patron" Foreground="White" FontWeight="Bold"  Margin="12,0,0,0"/>
+
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Style="{StaticResource Black}" Width="100"  BorderBrush="#FF006698" Background="#FFE0E7F0">
+                                <Button.Content>
+                                    <StackPanel Orientation="Vertical" >
+                                        <Image Source="/Design;component/Images/Menu4.png" Height="25" Width="25" Margin="0,0,0,10" />
+                                        <TextBlock Text="Account" Foreground="#FF004A78" FontWeight="Bold" Margin="10,-8,0,0" Width="50"/>
+                                        <TextBlock Text="Managment"  FontWeight="Bold"  Margin="12,0,0,0" Foreground="#FF004A78"/>
+
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Style="{StaticResource Black}" Width="100" Background="{x:Null}" BorderBrush="#FF006698">
+                                <Button.Content>
+                                    <StackPanel Orientation="Vertical" >
+                                        <Image Source="/Design;component/Images/Menu5.png" Height="25" Width="25" Margin="0,0,0,10" />
+                                        <TextBlock Text="Temporary" Foreground="White" FontWeight="Bold" Margin="10,-8,0,0" Width="70"/>
+                                        <TextBlock Text="Account" Foreground="White" FontWeight="Bold"  Margin="14,0,0,0"/>
+
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="2" BorderBrush="#FF005A8A" BorderThickness="1" Name="border3">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFD1DCE9" Offset="0" />
+                            <GradientStop Color="#FF98B6CC" Offset="0.994" />
+
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid  Height="26" Margin="20,0,20,0" >
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF0F5F4" Offset="0" />
+                                <GradientStop Color="#FFD9E7E8" Offset="0.453" />
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Width="100"  Content="Search" BorderBrush="#FFD9E7E8" FontFamily="Arial Rounded MT" FontWeight="Bold" FontSize="13" Foreground="#FF003260">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFF0F5F4" Offset="0" />
+                                        <GradientStop Color="#FFD9E7E8" Offset="0.453" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Button Width="100"  Content="ADD" BorderBrush="#FF0070C3" FontFamily="Arial Rounded MT" FontWeight="Bold" FontSize="13" Foreground="White">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF009AF3" Offset="1" />
+                                        <GradientStop Color="#FF0067B8" Offset="0" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Button Width="100" Content="Modify" BorderBrush="#FFD9E7E8" FontFamily="Arial Rounded MT" FontWeight="Bold" FontSize="13" Foreground="#FF003260">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFF0F5F4" Offset="0" />
+                                        <GradientStop Color="#FFD9E7E8" Offset="0.453" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Button Width="100"  Content="Delete" BorderBrush="#FFD9E7E8" FontFamily="Arial Rounded MT" FontWeight="Bold" FontSize="13" Foreground="#FF003260">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFF0F5F4" Offset="0" />
+                                        <GradientStop Color="#FFD9E7E8" Offset="0.453" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="1160" />
+                        <ColumnDefinition Width="300" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid HorizontalAlignment="Left" Margin="15,0,0,0">
+
+                        <StackPanel Margin="0,15,0,0">
+
+                            <Border CornerRadius="4" Height="40" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                <Button>
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Design;component/Images/button.png" />
+                                    </Button.Background>
+                                </Button>
+                            </Border>
+
+                            <Border CornerRadius="4" Height="40" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                <Button>
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Design;component/Images/Button1.png" />
+                                    </Button.Background>
+                                </Button>
+                            </Border>
+
+                            <Border CornerRadius="4" Height="40" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right">
+
+                                <Button>
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Design;component/Images/Button2.png" />
+                                    </Button.Background>
+                                </Button>
+                            </Border>
+
+                            <Border CornerRadius="4" Height="40" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                <Button>
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Design;component/Images/Button4.png" />
+                                    </Button.Background>
+                                </Button>
+                            </Border>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid  Margin="40,0,0,0" HorizontalAlignment="Left" Width="1120">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Background="#FF244E6C" >
+                            <!--<Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="68" />
+                            <ColumnDefinition Width="580" />
+                           
+                        </Grid.ColumnDefinitions>-->
+                            <Border HorizontalAlignment="Left" BorderBrush="Wheat" Height="45" Width="45" Margin="10,0,0,0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Design;component/Images/img.png" />
+                                </Border.Background>
+                            </Border>
+                            <Grid Margin="70,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                </Grid.RowDefinitions>
+                                <Label Content="Venkatesh Balasburamaniam" FontSize="26" Foreground="White"  FontFamily="Arial"  />
+                                <Line Grid.Row="0" X1="0" Y1="30"  X2="1200" Y2="30" Stroke="#FF618FB5"  StrokeThickness="2" VerticalAlignment="Bottom"  />
+                                <Line Grid.Row="1" X1="50" Y1="60" X2="50" Y2="0" Stroke="#FF618FB5"  StrokeThickness="2"  Width="56" HorizontalAlignment="Left" Margin="100,0,0,0"/>
+                                <Label Grid.Row="1" Content="00001234" FontSize="18" Foreground="#FFFFC74F" FontWeight="ExtraBold" FontFamily="Arial"  />
+                                <Label Grid.Row="1" Content="DOB:" FontSize="16" Foreground="White"  FontFamily="Arial" Margin="150,4,0,0"/>
+                                <Label Grid.Row="1" Content="15/05/1986" FontSize="16" Foreground="#FFFFC74F"  FontFamily="Arial" Margin="190,4,0,0"/>
+                                <Label Grid.Row="1" Content="Club:" FontSize="16" Foreground="White"  FontFamily="Arial" Margin="280,4,0,0"/>
+                                <Label Grid.Row="1" Content="Mass" FontSize="16" Foreground="#FFFFC74F"  FontFamily="Arial" Margin="320,4,0,0"/>
+                                <Label Grid.Row="1" Content="Tier:" FontSize="16" Foreground="White"  FontFamily="Arial" Margin="370,4,0,0"/>
+                                <Label Grid.Row="1" Content="City Club Blue" FontSize="16" Foreground="#FFFFC74F"  FontFamily="Arial" Margin="410,4,0,0"/>
+
+                            </Grid>
+
+                        </Grid>
+                        <Grid Grid.Row="1" Background="#FF4E85B4" Width="1120" HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="72" />
+                                <RowDefinition Height="*" />
+
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                                <Button VerticalAlignment="Center" Width="100" Height="38" Content="Basic Info" Foreground="White">
+                                    <Button.BorderBrush>
+                                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                            <GradientStop Color="#FF002C4C" Offset="0" />
+                                            <GradientStop Color="#FF00466C" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.BorderBrush>
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF002848" Offset="0" />
+                                            <GradientStop Color="#FF004B72" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button VerticalAlignment="Center" Width="100" Height="38" FontSize="13" Content="Clubs" Foreground="#FF006293">
+
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" >
+                                            <GradientStop Color="#FFF2F6F8" Offset="0" />
+                                            <GradientStop Color="#FFE1E5EA" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button VerticalAlignment="Center" Width="100" Height="38" Content="Card Print" Foreground="#FF006293">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFF2F6F8" Offset="0" />
+                                            <GradientStop Color="#FFE1E5EA" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </StackPanel>
+
+                            <Grid Grid.Row="1">
+                                <!--<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="*" />
+                                
+                            </Grid.ColumnDefinitions>-->
+                                <Grid Margin="20,0,0,0">
+                                    <Border BorderBrush="Wheat">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="40" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0">
+                                                <Border>
+                                                    <Border.Background>
+                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                            <GradientStop Color="#FFD2E3EF" Offset="0" />
+                                                            <GradientStop Color="#FFA0C2DB" Offset="1" />
+                                                        </LinearGradientBrush>
+                                                    </Border.Background>
+                                                    <Label Content="Basic Infromation" VerticalAlignment="Center" Margin="10,0,0,0" FontFamily="Arial" FontSize="18" />
+                                                </Border>
+                                            </Grid>
+
+                                            <Grid Grid.Row="1" Height="680" VerticalAlignment="Top">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="50" />
+                                                    <RowDefinition Height="120" />
+                                                    <RowDefinition Height="90" />
+                                                    <RowDefinition Height="90" />
+                                                    <RowDefinition Height="280" />
+                                                    <RowDefinition Height="48" />
+                                                </Grid.RowDefinitions>
+                                                <Border Background="#FFDDE7F1" Grid.RowSpan="8" ></Border>
+
+                                                <Grid Grid.Row="0" Width="1100" HorizontalAlignment="Left">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="135" />
+                                                        <ColumnDefinition Width="300" />
+                                                        <ColumnDefinition Width="70" />
+                                                        <ColumnDefinition Width="600" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Grid.Column="0" Text="Patron Number:" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15" />
+                                                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Margin="10,0,0,0" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2" FontSize="15" />
+                                                    <Line Grid.Column="2" X1="50" Y1="55" X2="50" Y2="0" Stroke="DarkGray"  StrokeThickness="1" Canvas.Left="153" Canvas.Top="37"  Width="56" />
+                                                    <Line X1="0" Y1="30"  X2="1250" Y2="30" Stroke="DarkGray"  StrokeThickness="1" Grid.ColumnSpan="7" VerticalAlignment="Bottom"  />
+                                                    <Button Grid.Column="3" Content="PRE Registration Search" Style="{StaticResource RoundButtonTemplate}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="35" Width="230" FontSize="15" Margin="40,0,0,0"/>
+
+                                                </Grid>
+
+                                                <Grid Grid.Row="1" Width="1100" HorizontalAlignment="Left">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80" />
+                                                        <ColumnDefinition Width="105" />
+                                                        <ColumnDefinition Width="240" />
+                                                        <ColumnDefinition Width="105" />
+                                                        <ColumnDefinition Width="240" />
+                                                        <ColumnDefinition Width="105" />
+                                                        <ColumnDefinition Width="225" />
+
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10" />
+                                                        <RowDefinition Height="30" />
+                                                        <RowDefinition Height="40" />
+                                                        <RowDefinition Height="30" />
+                                                        <RowDefinition Height="10" />
+                                                    </Grid.RowDefinitions>
+                                                    <Label Content="*"  FontSize="15" Foreground="Red" FontWeight="Bold" Margin="14,0,0,0" Name="label1" VerticalAlignment="Top" Grid.Row="1" />
+                                                    <TextBlock Grid.Row="1" Text="Primary" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"   />
+                                                    <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0" Height="30"  BorderBrush="#FF4B7FB2" Background="White" />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="2"  Margin="10,0,0,0"  Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"  Margin="10,0,0,0" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"  Margin="10,0,0,0" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <ComboBox Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"  Margin="10,0,0,0" Height="30"  BorderBrush="#FF4B7FB2" Background="White" />
+                                                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Preferred" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"   />
+                                                    <TextBox FontSize="15" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Margin="10,0,0,0"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBlock Grid.Row="3" Text="Extended" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"   />
+                                                    <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0" Height="30"  BorderBrush="#FF4B7FB2" Background="White" />
+                                                    <TextBox FontSize="15" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Margin="10,0,0,0" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="10,0,0,0" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="3" Grid.Column="4" VerticalAlignment="Center" Margin="10,0,0,0" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <ComboBox Grid.Row="3" Grid.Column="5" VerticalAlignment="Center" Margin="10,0,0,0" Height="30"  BorderBrush="#FF4B7FB2" Background="White" />
+                                                    <GroupBox Grid.Column="7" Grid.RowSpan="5" Style="{DynamicResource MyGroupbox1}" Margin="10,0,0,0"  Header="Display" FontFamily="Arial" FontSize="17" BorderBrush="#FFF3F4F6" >
+                                                        <Border>
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="10" />
+                                                                    <RowDefinition Height="22" />
+                                                                    <RowDefinition Height="22" />
+                                                                    <RowDefinition Height="22" />
+                                                                    <RowDefinition Height="10" />
+                                                                </Grid.RowDefinitions>
+                                                                <RadioButton Grid.Row="1" VerticalAlignment="Center" Margin="20,0,0,0" />
+                                                                <TextBlock Grid.Row="1" Text="Primary" Margin="50,0,0,0" FontSize="14" VerticalAlignment="Center" FontFamily="Arial" />
+                                                                <RadioButton Grid.Row="2" VerticalAlignment="Center" Margin="20,0,0,0" />
+                                                                <TextBlock Grid.Row="2" Text="Preferred" Margin="50,0,0,0" FontSize="14" VerticalAlignment="Center" FontFamily="Arial"/>
+                                                                <RadioButton Grid.Row="3" VerticalAlignment="Center" Margin="20,0,0,0" />
+                                                                <TextBlock Grid.Row="3" Text="Extended" Margin="50,0,0,0" FontSize="14" VerticalAlignment="Center" FontFamily="Arial"/>
+                                                            </Grid>
+                                                        </Border>
+                                                    </GroupBox>
+                                                    <Line Grid.Row="3" X1="0" Y1="30"  X2="1250" Y2="30" Stroke="DarkGray"  StrokeThickness="1" Grid.ColumnSpan="9" VerticalAlignment="Bottom" Margin="0,0,1,0" Grid.RowSpan="2" Width="1249" />
+                                                </Grid>
+
+                                                <Grid Grid.Row="2" Width="1100" HorizontalAlignment="Left">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80" />
+                                                        <ColumnDefinition Width="55" />
+                                                        <ColumnDefinition Width="65" />
+                                                        <ColumnDefinition Width="70" />
+                                                        <ColumnDefinition Width="200" />
+                                                        <ColumnDefinition Width="100" />
+                                                        <ColumnDefinition Width="200" />
+                                                        <ColumnDefinition Width="110" />
+                                                        <ColumnDefinition Width="200" />
+                                                        <ColumnDefinition Width="15" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10" />
+                                                        <RowDefinition Height="30" />
+                                                        <RowDefinition Height="40" />
+                                                        <RowDefinition Height="10" />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Row="1" Text="Gender" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"   />
+                                                    <Label Content="*" FontSize="15"  Foreground="Red" FontWeight="Bold"  Name="label2" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="20,0,0,0"/>
+                                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Male" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"   />
+                                                    <RadioButton Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                                                    <RadioButton Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Female" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"   />
+                                                    <TextBlock Grid.Row="1" Grid.Column="3" Text="DOB" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <Label Content="*" FontSize="15" Grid.Column="3" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Left" Margin="15,0,0,0" Name="label3" VerticalAlignment="Top" Grid.Row="1" Width="15" />
+                                                    <TextBox Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"  Height="30" FontSize="15" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBlock Grid.Row="1" Grid.Column="5" Text="Host" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <Label Content="*" FontSize="15" Grid.Column="5" Foreground="Red" FontWeight="Bold" Name="label4" VerticalAlignment="Top" Grid.Row="1" Width="16" />
+                                                    <ComboBox Grid.Row="1" Grid.Column="6" VerticalAlignment="Center"  Height="30"  BorderBrush="#FF4B7FB2" Background="White" />
+                                                    <TextBlock Grid.Row="1" Grid.Column="7" Text="Club" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <ComboBox Grid.Row="1" Grid.Column="8" VerticalAlignment="Center"  Height="30"  BorderBrush="#FF4B7FB2" Background="White"  />
+                                                    <Label Content="*" FontSize="15" Grid.Column="7" Foreground="Red" FontWeight="Bold" HorizontalAlignment="left" Name="label66" VerticalAlignment="Top" Grid.Row="1" Margin="55,0,0,0"/>
+
+                                                    <TextBlock Grid.Row="2" Grid.Column="3" Text="Source" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <Label Content="*" FontSize="15" Grid.Column="3" Foreground="Red" FontWeight="Bold" HorizontalAlignment="left" Name="label5" VerticalAlignment="Top" Grid.Row="2" />
+                                                    <ComboBox Grid.Row="2" Grid.Column="4" VerticalAlignment="Center"  Height="30"  BorderBrush="#FF4B7FB2"  Background="White"/>
+                                                    <TextBlock Grid.Row="2" Grid.Column="5" Text="Occupation" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <ComboBox Grid.Row="2" Grid.Column="6" VerticalAlignment="Center"  Height="30"  BorderBrush="#FF4B7FB2" Background="White" />
+                                                    <TextBlock Grid.Row="2" Grid.Column="7" Text="Independ Rep" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <TextBox FontSize="15" Grid.Row="2" Grid.Column="8" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <Line Grid.Column="2" Grid.RowSpan="4" X1="50" Y1="90" X2="50" Y2="0" Stroke="DarkGray"  StrokeThickness="1"  Width="56"  Margin="13,0,0,0"/>
+                                                    <Line Grid.Row="3" X1="0" Y1="30"  X2="1250" Y2="30" Stroke="DarkGray"  StrokeThickness="1" Grid.ColumnSpan="10" VerticalAlignment="Bottom"  Grid.RowSpan="4" />
+
+
+                                                </Grid>
+
+                                                <Grid Grid.Row="3" Width="1100" HorizontalAlignment="Left">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80" />
+                                                        <ColumnDefinition Width="70" />
+                                                        <ColumnDefinition Width="165" />
+                                                        <ColumnDefinition Width="40" />
+                                                        <ColumnDefinition Width="60" />
+                                                        <ColumnDefinition Width="110" />
+                                                        <ColumnDefinition Width="70" />
+                                                        <ColumnDefinition Width="165" />
+                                                        <ColumnDefinition Width="100" />
+                                                        <ColumnDefinition Width="60" />
+                                                        <ColumnDefinition Width="160" />
+                                                        <ColumnDefinition Width="15" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10" />
+                                                        <RowDefinition Height="30" />
+                                                        <RowDefinition Height="40" />
+                                                        <RowDefinition Height="10" />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Row="1" Text="Mobile" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2" Margin="10,0,0,0"  />
+                                                    <CheckBox Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderThickness="1" />
+                                                    <TextBlock Grid.Row="1" Grid.Column="4" Text="SMS" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  />
+                                                    <TextBlock Grid.Row="1" Grid.Column="5" Text="Phone (Home)" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="6" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="7" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2" Margin="10,0,0,0"  />
+                                                    <TextBlock Grid.Row="1" Grid.Column="8" Text="Phone (Bus)" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="9" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="1" Grid.Column="10" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2" Margin="10,0,0,0"  />
+
+                                                    <TextBlock Grid.Row="2" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <TextBox FontSize="15" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <CheckBox Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                    <TextBlock Grid.Row="2" Grid.Column="4" Text="Yes" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  />
+
+                                                    <TextBlock Grid.Row="2" Grid.Column="5" Text="FAX" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <TextBox FontSize="15" Grid.Row="2" Grid.Column="6" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2"  />
+                                                    <TextBox FontSize="15" Grid.Row="2" Grid.Column="7" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FF4B7FB2" Margin="10,0,0,0"  />
+
+                                                    <TextBlock Grid.Row="2" Grid.Column="8" Text="Language" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,10,0" />
+                                                    <ComboBox Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center"  Height="30"  BorderBrush="#FF4B7FB2" Background="White" />
+
+                                                    <Line Grid.Row="3" X1="0" Y1="30"  X2="1250" Y2="30" Stroke="DarkGray"  StrokeThickness="1" Grid.ColumnSpan="13" VerticalAlignment="Bottom"  Grid.RowSpan="4" />
+
+
+                                                </Grid>
+
+                                                <Grid Grid.Row="4" Width="1100" HorizontalAlignment="Left">
+                                                    <StackPanel Orientation="Horizontal">
+
+                                                        <GroupBox Grid.Column="0" Style="{DynamicResource MyGroupbox}" Margin="20,10,0,10"  Header="Identification Details" FontFamily="Arial" FontSize="18" BorderThickness="2" >
+                                                            <Border  >
+                                                                <Grid  >
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="120" />
+                                                                        <ColumnDefinition Width="230" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="10" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+
+
+                                                                    </Grid.RowDefinitions>
+
+                                                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="ID Type" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+
+                                                                    <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30"  BorderBrush="#FFA7A8A7" Background="White" Width="200"/>
+
+                                                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="ID Number" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <TextBox FontWeight="Normal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FFA7A8A7" Width="200"  />
+
+                                                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Country" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30"  BorderBrush="#FFA7A8A7" Background="White" Width="200"/>
+
+                                                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="State" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <ComboBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30"  BorderBrush="#FFA7A8A7" Background="White" Width="200"/>
+
+                                                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Expiry Date" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FFA7A8A7" Width="200"  />
+                                                                    <Label Content="*" Grid.Row="1" Height="20" Foreground="Red" HorizontalAlignment="Right" Margin="0,5,70,0" Name="label6" VerticalAlignment="Top" />
+                                                                    <Label Content="*" Grid.Row="2" Height="20" Foreground="Red" HorizontalAlignment="Right" Margin="0,5,90,0" Name="label7" VerticalAlignment="Top" />
+                                                                    <Label Content="*" Grid.Row="3" Height="20" Foreground="Red" HorizontalAlignment="Right" Margin="0,5,70,0" Name="label8" VerticalAlignment="Top" />
+                                                                    <!--<Label Content="*" Grid.Row="4" Height="20" Foreground="Red" HorizontalAlignment="Right" Margin="0,5,55,0" Name="label9" VerticalAlignment="Top" />-->
+                                                                    <Label Content="*" Grid.Row="5" Height="20" Foreground="Red" HorizontalAlignment="Right" Margin="0,4,95,0" Name="labe20" VerticalAlignment="Top" />
+                                                                </Grid>
+                                                            </Border>
+
+
+                                                        </GroupBox>
+                                                        <GroupBox Grid.Column="1" Style="{DynamicResource MyGroupbox}"  Margin="20,10,10,10" Header="Address" FontFamily="Arial" FontSize="18">
+                                                            <Border >
+                                                                <Grid  >
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="140" />
+                                                                        <ColumnDefinition Width="200" />
+                                                                        <ColumnDefinition Width="100" />
+                                                                        <ColumnDefinition Width="200" />
+                                                                        <ColumnDefinition Width="30" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="10" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+                                                                        <RowDefinition Height="40" />
+
+
+                                                                    </Grid.RowDefinitions>
+
+                                                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Type" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30"  BorderBrush="#FFA7A8A7" Background="White" Width="200" Margin="0,5" />
+
+                                                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Address Line 1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <TextBox Grid.Row="2" FontWeight="Normal" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FFA7A8A7"  />
+
+                                                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Address Line 2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <TextBox FontWeight="Normal" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center"  Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FFA7A8A7"  />
+
+                                                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Country" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <ComboBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30"  BorderBrush="#FFA7A8A7" Background="White" Width="200" Margin="0,5" />
+
+                                                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="State" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <ComboBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30"  BorderBrush="#FFA7A8A7" Background="White" Width="200" Margin="0,5" />
+
+                                                                    <TextBlock Grid.Row="4" Grid.Column="2" Text="City" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <ComboBox Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30"  BorderBrush="#FFA7A8A7" Background="White" Width="200" Margin="0,5" />
+
+                                                                    <TextBlock Grid.Row="5" Grid.Column="2" Text="Post Code" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15"  Margin="0,0,20,0" />
+                                                                    <TextBox FontWeight="Normal" Grid.Row="5" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Height="30" Template="{DynamicResource RoundTxtBoxBaseControlTemplate}" BorderBrush="#FFA7A8A7" Width="200"  />
+
+
+                                                                </Grid>
+                                                            </Border>
+
+                                                        </GroupBox>
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <Grid Grid.Row="5">
+                                                    <Button Content="Submit" Style="{StaticResource RoundButtonTemplate}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="130" Margin="180,0,280,0" FontSize="15" />
+                                                    <Button Content="Cancel" Style="{StaticResource RoundButtonTemplate}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="130" FontSize="15" Margin="480,0,280,0"/>
+
+                                                </Grid>
+
+                                            </Grid>
+
+                                        </Grid>
+
+                                    </Border>
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+
+
+                    </Grid>
+
+                    <Grid Grid.Column="2"  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="72" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="722" />
+
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Content="ENT" VerticalAlignment="Center" Foreground="White" FontWeight="ExtraBold" Margin="21,0,0,0" FontSize="14" />
+                        <Label Grid.Row="1" Content="COD" VerticalAlignment="Center" Foreground="White" FontWeight="ExtraBold" Margin="21,0,0,0" FontSize="14" />
+
+                        <DockPanel Grid.Row="0" LastChildFill="True" Margin="90,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Height="20" Width="20" BorderBrush="#FFE80000">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFCE2D34" Offset="0" />
+                                            <GradientStop Color="#FFE80000" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FFE80000">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFCE2D34" Offset="0" />
+                                            <GradientStop Color="#FFE80000" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+
+                            </StackPanel>
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="1" LastChildFill="True" Margin="90,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Height="20" Width="20" BorderBrush="#FFE80000">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFCE2D34" Offset="0" />
+                                            <GradientStop Color="#FFE80000" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FFE80000">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFCE2D34" Offset="0" />
+                                            <GradientStop Color="#FFE80000" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Height="20" Width="20" BorderBrush="#FF009995">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF00D0CA" Offset="0" />
+                                            <GradientStop Color="#FF009995" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+
+                            </StackPanel>
+                        </DockPanel>
+
+                        <Line Grid.Row="0" X1="25" Y1="30"  X2="300" Y2="30" Stroke="#FF618FB5"  StrokeThickness="2" VerticalAlignment="Bottom"  />
+
+                        <Grid Grid.Row="2" >
+                            <Border>
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF4F8DBE" Offset="0" />
+                                        <GradientStop Color="#FF427FAC" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Height="30" Width="40" Margin="30,0,0,0">
+
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Design;component/Images/Mailbox.png" />
+                                            </Button.Background>
+                                        </Button>
+                                        <Label Content="40" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                        <Button Style="{StaticResource Black1}" Height="40" Width="42" Margin="20,0,0,0" BorderBrush="#FF4784B2">
+
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Design;component/Images/Aa1.png" />
+                                            </Button.Background>
+                                        </Button>
+                                        <Label Content="2" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Row="3" Background="#FF8AB2CF">
+                            <Label Grid.Row="3" Content="Additional Information" Margin="20,0,0,0" FontSize="17" Foreground="White" FontFamily="Arial"/>
+                        </Grid>
+                        <Grid Grid.Row="4" Background="#FF8AB2CF">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="260" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1">
+
+                                <Border Height="680" Width="260" VerticalAlignment="Top">
+                                    <Grid Background="White" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="520" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <Grid.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FF0077D5" Offset="0" />
+                                                    <GradientStop Color="#FF0077D6" Offset="1" />
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+                                            <Label  Content="Identification Details" Margin="10,0,0,0" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Arial"/>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1">
+
+
+                                            <Button BorderBrush="#FFD1E8FA" >
+                                                <Button.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFF0F7FB" Offset="0" />
+                                                        <GradientStop Color="#FFC8E4FA" Offset="1" />
+                                                    </LinearGradientBrush>
+                                                </Button.Background>
+                                            </Button>
+                                            <Label  Content="Address" Margin="10,0,0,0" FontSize="13" Foreground="Black" VerticalAlignment="Center" FontFamily="Arial"/>
+
+                                        </Grid>
+
+                                        <Grid Grid.Row="2">
+
+                                            <Button BorderBrush="#FFD1E8FA" >
+                                                <Button.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFF0F7FB" Offset="0" />
+                                                        <GradientStop Color="#FFC8E4FA" Offset="1" />
+                                                    </LinearGradientBrush>
+                                                </Button.Background>
+                                            </Button>
+                                            <Label  Content="PIN" Margin="10,0,0,0" FontSize="13" Foreground="Black" VerticalAlignment="Center" FontFamily="Arial"/>
+
+                                        </Grid>
+
+                                        <Grid Grid.Row="3">
+
+                                            <Button BorderBrush="#FFD1E8FA">
+                                                <Button.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFF0F7FB" Offset="0" />
+                                                        <GradientStop Color="#FFC8E4FA" Offset="1" />
+                                                    </LinearGradientBrush>
+                                                </Button.Background>
+                                            </Button>
+                                            <Label  Content="Patron Photo" Margin="10,0,0,0" FontSize="13" Foreground="Black" VerticalAlignment="Center" FontFamily="Arial"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Border>
+
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF0F5F6" Offset="0" />
+                            <GradientStop Color="#FFDFECEB" Offset="1" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Border Height="30" BorderThickness="1" BorderBrush="DarkGray">
+                        <Grid>
+                            <TextBlock Text="Last sved data on 12/07/2012" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                            <Line Grid.Row="1" X1="50" Y1="50" X2="50" Y2="0" Stroke="DarkGray"  StrokeThickness="1"  Width="56" HorizontalAlignment="Left" Margin="140,0,0,0"/>
+                            <ProgressBar VerticalAlignment="Center" Height="13" Width="200" HorizontalAlignment="Left" Margin="200,0,0,0"/>
+                            <Line Grid.Row="1" X1="50" Y1="60" X2="50" Y2="0" Stroke="DarkGray"  StrokeThickness="1"  Width="56" HorizontalAlignment="Left" Margin="360,0,0,0"/>
+                            <Image Source="/Design;component/Images/Untitled.png" Height="20" Width="25" HorizontalAlignment="Right" Margin="0,0,235,0"/>
+                            <TextBlock Text="Chery Chiang    |  COD  |  OOD DSKTPOO1  " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+
+                            <Line Grid.Row="1" X1="50" Y1="60" X2="50" Y2="0" Stroke="DarkGray"  StrokeThickness="1"  Width="56" HorizontalAlignment="Right" Margin="0,0,270,0"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Viewbox>
+    <!--</ScrollViewer>-->
+</Window>
