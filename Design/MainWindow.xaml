@@ -4,7 +4,7 @@
         Height="{Binding SystemParameters.PrimaryScreenHeight}" 
     Width="{Binding SystemParameters.PrimaryScreenWidth}"
         Title="MainWindow"  Background="#FF295475" >
-    
+    <!--hhhhhhhhhh-->
     <Window.Resources>
         
         <Style x:Key="MyGroupbox" TargetType="GroupBox">
